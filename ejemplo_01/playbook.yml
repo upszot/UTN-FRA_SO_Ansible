@@ -1,0 +1,16 @@
+---
+- hosts: 
+    - testing
+    - desarrollo
+    - produccion
+
+  tasks:
+    - name: "Mensaje 1"
+      debug:
+        msg: "Ejemplo de playbook - 01 "
+
+    - name: "Mensaje 2"
+      debug:
+        msg: 
+          - "Soy: {{ ansible_hostname }} "
+          - "Estoy en el grupo: {{ hostvars[inventory_hostname].group_names }}"

@@ -1,0 +1,8 @@
+---
+# tasks file for role_ejemplo1
+
+- name: "mensaje"
+  debug:
+    msg: "Ejemplo 02 - role ansible"
+
+

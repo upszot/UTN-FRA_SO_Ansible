@@ -1,0 +1,35 @@
+---
+- hosts: 
+    - all
+  tasks:
+    - name: "Set WEB_SERVICE dependiendo de la distro"
+      set_fact:
+        WEB_SERVICE: "{% if   ansible_facts['s_family']  == 'Debian' %}  'apache2' 
+                      {% elif ansible_facts['os_family'] == 'RedHat'  %} 'httpd'
+                      {% endif %}"
+
+    - name: "Instalando apache " 
+      become: yes
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - "{{ WEB_SERVICE }}"
+
+    # Copio pagina web
+    - name: "Copiando mi pagina web"
+      become: yes
+      copy:
+        src: index.htm
+        dest: /var/www/html/index.html
+        owner: "www-data"
+        group: "www-data"
+        mode: 0644
+
+    #systemctl enable --now httpd
+    - name: "Habilitar y restartear {{ WEB_SERVICE }}"
+      become: yes
+      service:
+        name: "{{ WEB_SERVICE }}"
+        state: restarted
+        enabled: yes

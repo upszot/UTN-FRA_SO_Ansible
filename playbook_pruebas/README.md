@@ -1,11 +1,9 @@
-# Ansible - Ejemplo Rol multi_Pruebas
+# Ansible - playbook_pruebas
 
-	- La idea es tener un ejemplo de un rol un poco mas completo
-		Para poder ver la potencialidad de ansible y el uso de la estructura de directorio.
+	- Ejemplo de un playbook que llama a un rol 
 
-	- Uso de variables
-	- Inclusion de roles
-	- Inclusion de archivos
+	- En este caso el rol se encuentra dentro de la carpeta Roles
+	- Pero podria estar referenciado en el archivo requeryment.yml y no existir la carpeta Roles
 
 
 ## Precondiciones:
@@ -13,23 +11,19 @@
 
 ## Ejecucion:
 ```
-ansible-playbook -i inventory playbook.yml
+reset; ansible-playbook -i inventory/hosts playbook.yml
 ```
 ### Contenido:
 	- playbook.yml  -> receta 
-	- inventory  -> inventario escrito en formato INI
-	- Carpeta file con index.html
 	- ansible.cfg -> configuracion local de ansible
+	- inventory
+		- hosts -> inventario propiamente dicho en formato INI
+		- host_vars  -> variables espesificas a un host
+		- group_vars -> variables espesificas para grupos de host
+	
 
 ### Comportamiento:
-	- Se conecta a todos los servidores definidos en el inventory
-	- Setea variable con nombre del paquete de apache segun distribucion
-	- Instala paquete de apache segun variable.
-	- copia index.html
-	- Restartea y habilita el servicio
-
-#### NOTA:
-  - El playbook es en modo academico, ya que le faltaria:
-    -  agregar creacion de usuario 
-    -  validar paths segun servicio web
-    -  configuracion del servicio web segun requerimientos de la pagina.
+	- El playbook llama al rol: multi_Pruebas y se ejecuta contra el listado de host definido
+	tomando los valores de las variables de los distintos archivos 
+	- Para ver que hace el rol en cuestion ver README.md del rol (dentro de la carpeta roles)
+	

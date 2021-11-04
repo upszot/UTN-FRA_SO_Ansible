@@ -22,3 +22,4 @@
 | ejemplo_01 			| playbook hola mundo 							|
 | ejemplo_02 			| playbook Ejemplo instalacion paquete 							|
 | ejemplo_03 			| Ejemplo rol basico 							|
+| playbook_pruebas 			| Ejemplo playbook que llama a rol 							|

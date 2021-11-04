@@ -11,10 +11,29 @@
 ## Precondiciones:
 	- Tener instalado ansible
 
-## Ejecucion:
+## Ejecucion (uso normal):
 ```
-ansible-playbook -i inventory playbook.yml
+ansible-playbook -i tests/inventory/hosts tests/test_playbook.yml
 ```
+
+## Otras formas de Ejecucion:
+- solo tareas con tag "otros" :
+```
+ansible-playbook -i tests/inventory/hosts tests/test_playbook.yml -t otros
+```
+- skipeando tareas con tag "cartel" :
+```
+ansible-playbook -i tests/inventory/hosts tests/test_playbook.yml --skip-tags cartel 
+```
+- Definiendo usuario contra el que se conecta (-u) y que pida clave de ssh (-k) :
+```
+ansible-playbook -i tests/inventory/hosts tests/test_playbook.yml -u usuario -k
+```
+- Solo contra 1 grupo o contra 1 host (-l) :
+```
+ansible-playbook -i tests/inventory/hosts tests/test_playbook.yml -l produccion
+```
+
 ### Contenido:
 	- playbook.yml  -> receta 
 	- inventory  -> inventario escrito en formato INI
@@ -23,13 +42,10 @@ ansible-playbook -i inventory playbook.yml
 
 ### Comportamiento:
 	- Se conecta a todos los servidores definidos en el inventory
-	- Setea variable con nombre del paquete de apache segun distribucion
-	- Instala paquete de apache segun variable.
-	- copia index.html
-	- Restartea y habilita el servicio
+	- Setea variables segun grupos y hosts
+	- Pide Nro de prueba
+    	- De a cuerdo al Nro ingresado:
+    	- Nro 1: Muestra mensaje "Dentro prueba_1"
+    	- Nro 2: Muestra valores de variables segun los distintos archivos
+    	- Nro 3: Crea directorios en /tmp/multi_Pruebas_borrame y deja archivo segun template
 
-#### NOTA:
-  - El playbook es en modo academico, ya que le faltaria:
-    -  agregar creacion de usuario 
-    -  validar paths segun servicio web
-    -  configuracion del servicio web segun requerimientos de la pagina.

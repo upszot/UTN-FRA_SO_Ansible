@@ -2,6 +2,8 @@
 
 - debug:
     msg: "Dentro del rol"
+  tags:
+    - cartel
 
 - name: "Mostrando facts - No incluir"
   include: _otros/otros.yml

@@ -1,0 +1,12 @@
+---
+
+- debug:
+    msg: "Dentro prueba_2"
+
+- name: "Muestro Distintas variables:"
+  debug:
+    msg: 
+        - "Variable_Vars_main: {{ Variable_Vars_main }}"
+        - "Var_grupo: {{ Var_grupo }}"
+        - "lista: {{ lista }} "
+

@@ -1,0 +1,9 @@
+[all:children]
+tests
+local
+
+[tests]
+#192.168.10.241 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+
+[local]
+localhost ansible_connection=local 

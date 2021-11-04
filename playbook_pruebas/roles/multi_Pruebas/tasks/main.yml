@@ -1,0 +1,18 @@
+---
+
+- debug:
+    msg: "Dentro del rol"
+
+- name: "Mostrando facts - No incluir"
+  include: _otros/otros.yml
+  tags:
+    - never
+    - otros
+
+- debug:
+    msg: "archivo a incluir Nro: {{ NroPrueba }}"
+
+
+- name: "Incluyo archivo prueba_NroPrueba"
+  include: prueba_{{ NroPrueba }}.yml
+

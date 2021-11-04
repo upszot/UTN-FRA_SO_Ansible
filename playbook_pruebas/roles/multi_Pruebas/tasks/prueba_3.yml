@@ -1,0 +1,19 @@
+---
+
+- debug:
+    msg: "Dentro prueba_3"
+
+- name: "Crear directorios en /tmp/multi_Pruebas_borrame/"
+  file:
+    path: "/tmp/multi_Pruebas_borrame/{{ item }}"
+    state: directory
+    mode: '0775'
+    recurse: yes
+  with_items: 
+    - "log"
+    - "config"
+
+- name: "Agrego archivo desde template"
+  template:
+    src: template_01.j2
+    dest: /tmp/multi_Pruebas_borrame/config/archivo.txt

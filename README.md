@@ -15,7 +15,6 @@
 ### Contendido:
  - Presentacion Introductoria
  - Carpetas de ejemplos:
-   - ejemplo_01
 
 | Subcarpeta 			| Description 							|
 | ------                | ------ 							|

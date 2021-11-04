@@ -3,10 +3,15 @@
 - debug:
     msg: "Dentro prueba_2"
 
+
+- name: "Muestro Distintas variables:"
+  debug:
+    msg: 
+        - "Var_grupo: {{ Var_grupo }}"
+        - "lista: {{ lista }} "
+
 - name: "Muestro Distintas variables:"
   debug:
     msg: 
         - "Variable_Vars_main: {{ Variable_Vars_main }}"
-        - "Var_grupo: {{ Var_grupo }}"
-        - "lista: {{ lista }} "
-
+        - "Variable_host_Vars: {{ Variable_host_Vars }}"

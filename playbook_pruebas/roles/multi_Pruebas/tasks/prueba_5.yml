@@ -1,0 +1,41 @@
+---
+
+#---------- Jugando un poco con las variables -----------#
+- name: Guardar ansible_facts en un archivo
+  copy:
+    content: "{{ ansible_facts | to_nice_json }}"
+    dest: /tmp/ansible_facts.json
+
+- name: "Info del sistema operativo"
+  debug:
+    msg: "El Host tiene un distribucion: {{ ansible_facts['distribution'] }} que es un derivado de: {{ ansible_facts['os_family'] }}"
+
+
+#------------- Tipos de Variables -------------#
+- name: "display the variable data type"
+  debug:
+    msg: 
+      - " Data type of 'ansible_architecture'  is {{ ansible_architecture | type_debug }} "
+      - " Data type of 'ansible_apparmor' is {{ ansible_apparmor | type_debug }} "
+      - " Data type of 'ansible_all_ipv4_addresses' is {{ ansible_all_ipv4_addresses | type_debug }} "
+
+- name: Hacer una pausa de 3 segundos
+  pause:
+    seconds: 3
+
+- name: "Mostrando los datos"
+  debug:
+    msg: 
+      - "Simply printing the value of fact which is Ansible UnSafe Text type"
+      - "{{ ansible_architecture }}"
+      - ""
+      - "Muestro el diccionario"
+      - "{{ansible_apparmor}}"
+      - "Accessing an element of dictionary"
+      - "{{ansible_apparmor.status}}"
+      - ""
+      - "Accessing the list"
+      - "{{ansible_all_ipv4_addresses}}"
+      - ""
+      - "Accessing the Second Element of the list"
+      - "{{ansible_all_ipv4_addresses[1]}}"

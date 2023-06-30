@@ -1,0 +1,8 @@
+---
+
+- name: "Agrego archivo desde template"
+  template:
+    src: info_ansible.j2
+    dest: /tmp/info_ansible.txt
+
+

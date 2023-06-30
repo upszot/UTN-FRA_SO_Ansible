@@ -39,6 +39,8 @@ ansible-playbook -i tests/inventory/hosts tests/test_playbook.yml -l produccion
 	- inventory  -> inventario escrito en formato INI
 	- Carpeta file con index.html
 	- ansible.cfg -> configuracion local de ansible
+	- templates -> archivos de template de jinja2 que se usan con el modulo template
+	- test -> playbook de testing del rol para hacer integracion continua.
 
 ### Comportamiento:
 	- Se conecta a todos los servidores definidos en el inventory
@@ -48,4 +50,6 @@ ansible-playbook -i tests/inventory/hosts tests/test_playbook.yml -l produccion
     	- Nro 1: Muestra mensaje "Dentro prueba_1"
     	- Nro 2: Muestra valores de variables segun los distintos archivos
     	- Nro 3: Crea directorios en /tmp/multi_Pruebas_borrame y deja archivo segun template
+    	- Nro 4: Parcial 2 del 1er cuatrimestre 2023
+    	- Nro 5: Jugando con variables.
 

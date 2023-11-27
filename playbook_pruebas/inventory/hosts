@@ -5,6 +5,7 @@ produccion
 
 [testing]
 127.0.0.1 
+192.168.56.2 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
 
 [desarrollo]
 no-existe.com

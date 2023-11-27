@@ -7,4 +7,9 @@ lista:
   - valor2
   - valor3
 
-  
+LIST_USUARIOS: 
+    - { USERNAME: "userprueba1", HASH: "$6$W.HASH_FALSO" , GROUPS: "root,wheel"}
+    - { USERNAME: "userprueba2", HASH: "" , GROUPS: "grupo1"}
+    - { USERNAME: "userprueba3", HASH: "" , GROUPS: "grupo1,grupo2,grupo3" }
+    - { USERNAME: "userprueba4", HASH: "" , GROUPS: "grupo1,grupo4,grupo5" }
+

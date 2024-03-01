@@ -1,4 +1,4 @@
-# SO_Ansible
+# UTN-FRA_SO_Ansible
 
 	UTN - Arquitectura y Sistemas Operativos
 	El presente repo tiene la finalidad de dar una introduccion a Ansible

@@ -1,3 +1,5 @@
 [test]
 localhost ansible_connection=local 
+192.168.56.3 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+
 

@@ -4,9 +4,19 @@
   tasks:
     - name: "Set WEB_SERVICE dependiendo de la distro"
       set_fact:
-        WEB_SERVICE: "{% if   ansible_facts['os_family']  == 'Debian' %}  'apache2' 
-                      {% elif ansible_facts['os_family'] == 'RedHat'  %} 'httpd'
+        WEB_SERVICE: "{% if   ansible_facts['os_family']  == 'Debian' %}apache2 
+                      {% elif ansible_facts['os_family'] == 'RedHat'  %}httpd
                       {% endif %}"
+
+    - name: "Muestro nombre del servicio:"
+      debug:
+        msg: "nombre: {{ WEB_SERVICE }}"
+
+    - name: "Run the equivalent of 'apt update' as a separate step"
+      become: yes
+      ansible.builtin.apt:
+        update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
 
     - name: "Instalando apache " 
       become: yes
@@ -20,16 +30,30 @@
     - name: "Copiando mi pagina web"
       become: yes
       copy:
-        src: index.htm
+        src: index.html
         dest: /var/www/html/index.html
         owner: "www-data"
         group: "www-data"
         mode: 0644
 
     #systemctl enable --now httpd
-    - name: "Habilitar y restartear {{ WEB_SERVICE }}"
+    - name: "Habilitar y restartear apache2"
       become: yes
-      service:
-        name: "{{ WEB_SERVICE }}"
-        state: restarted
+      ansible.builtin.service:
+        name: "apache2"
         enabled: yes
+        state: restarted
+      when: ansible_facts['os_family'] == "Debian"
+      ignore_errors: true
+
+    #systemctl enable --now httpd
+    - name: "Habilitar y restartear httpd"
+      become: yes
+      ansible.builtin.service:
+        name: "httpd"
+        enabled: yes
+        state: restarted
+      when: ansible_facts['os_family'] == "RedHat"
+
+
+

@@ -6,7 +6,7 @@
     - cartel
 
 - name: "Mostrando facts - No incluir"
-  include: _otros/otros.yml
+  include_task: _otros/otros.yml
   tags:
     - never
     - otros
@@ -16,5 +16,5 @@
 
 
 - name: "Incluyo archivo prueba_NroPrueba"
-  include: prueba_{{ NroPrueba }}.yml
+  include_task: prueba_{{ NroPrueba }}.yml
 

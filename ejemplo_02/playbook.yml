@@ -4,7 +4,7 @@
   tasks:
     - name: "Set WEB_SERVICE dependiendo de la distro"
       set_fact:
-        WEB_SERVICE: "{% if   ansible_facts['s_family']  == 'Debian' %}  'apache2' 
+        WEB_SERVICE: "{% if   ansible_facts['os_family']  == 'Debian' %}  'apache2' 
                       {% elif ansible_facts['os_family'] == 'RedHat'  %} 'httpd'
                       {% endif %}"
 

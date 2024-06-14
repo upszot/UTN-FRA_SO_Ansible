@@ -1,0 +1,6 @@
+---
+# tasks file for role_02
+
+- debug:
+    msg: " Dentro del role_02"
+

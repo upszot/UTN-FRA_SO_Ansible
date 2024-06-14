@@ -1,0 +1,16 @@
+[all:children]
+testing
+desarrollo
+produccion
+
+[testing]
+127.0.0.1 
+192.168.56.2 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+192.168.56.3 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+
+[desarrollo]
+no-existe.com
+no-existe2.com ansible_host=200.200.200.1 ansible_user=provisioner
+
+[produccion]
+localhost ansible_connection=local 

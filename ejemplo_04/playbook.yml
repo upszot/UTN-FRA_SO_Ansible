@@ -1,0 +1,31 @@
+---
+- hosts: 
+  #- testing
+  #- desarrollo
+  - produccion
+
+  tasks:
+    - name: "Otra tarea"
+      debug:
+        msg: "Antes de la ejecucion de los roles"
+      tags:
+        - always
+
+    - name: "Import role 01"
+      import_role:
+        name: role_01
+      tags:
+        - role_01
+
+    - name: "Import role 02"
+      import_role:
+        name: role_02
+      tags:
+        - role_02
+    
+    - name: "Otra tarea"
+      debug:
+        msg: "Despues de la ejecucion de los roles"
+      tags:
+        - always
+

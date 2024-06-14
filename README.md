@@ -25,4 +25,8 @@
 
 ## Documentacion
  - [Documentacion Ansible](https://docs.ansible.com/ansible/latest/index.html)
- - 
+ - [Ansible - Mejores Prácticas](https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html)
+ - [Ansible - Index Modules](https://docs.ansible.com/ansible/2.9/modules/modules_by_category.html)
+ - [Ansible - Galaxy](https://galaxy.ansible.com/)
+ - [e-book Ansible en español](./Extras/ansible-es.pdf)
+ 

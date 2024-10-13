@@ -1,0 +1,31 @@
+---
+
+- name: "Agrego archivo desde template"
+  template:
+    src: info_ansible.j2
+    dest: /tmp/info_ansible.txt
+
+- name: "Creo grupos"
+  become: yes
+  ansible.builtin.group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+   - grupo1
+   - grupo2
+
+- name: Create a user 'johnd' with a home directory
+  ansible.builtin.user:
+    name: jperez
+    create_home: yes
+    groups: grupo1
+
+- name: "add NOPASSWD in sudores for group {{ GROUP_ADMIN }}"
+  become: yes
+  lineinfile:
+    path: /etc/sudoers.d/desa
+    state: present
+    line: '%grupo1 ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+
